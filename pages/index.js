@@ -47,7 +47,7 @@ export default function Home() {
 
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h3>Who's Getting Roasted:</h3>
+            <h3>Name:</h3>
             <input
               className={styles.input}
               type="text"
@@ -76,7 +76,7 @@ export default function Home() {
         </button>
         </div>
         <div className={styles.card}>
-          <h4>Roast:</h4>  
+          <h4>Comeback:</h4>  
           {isLoading ? (
             <div>Loading ...</div>
          ) : (
