@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useState, useEffect } from 'react';
-import { Input, Radio, Text, Textarea, Button, Spacer } from "@nextui-org/react";
+import { Input, Radio, Text, Textarea, Button, Spacer, Loading } from "@nextui-org/react";
 
 export default function Generator() {
   const [data, setData] = useState( { text:'' });
@@ -44,7 +44,7 @@ export default function Generator() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Comeback Generator</title>
+        <title>AI Message Generator</title>
       </Head>
       <main className={styles.main}>
       <Text
@@ -57,6 +57,7 @@ export default function Generator() {
         >
         AI Message Generator
         </Text>
+        <Spacer y={2} />
         <Input
             value={query}
             onChange={event => setQuery(event.target.value)}
@@ -66,9 +67,7 @@ export default function Generator() {
             color="secondary"
             labelPlaceholder="Name"
         />
-        {screenType === 'vertical' && (
             <Spacer y={2} />
-        )}
         <Radio.Group defaultValue="kind" color="secondary" orientation={screenType} onChange={setTypeQuery}>
             <Radio value="kind" isSquared>Kind</Radio>
             <Radio value="mean" isSquared>Mean</Radio>
@@ -77,9 +76,7 @@ export default function Generator() {
             <Radio value="sexy" isSquared>Sexy</Radio>
             <Radio value="strange" isSquared>Strange</Radio>
         </Radio.Group>
-        {screenType === 'vertical' && (
             <Spacer y={2} />
-        )}
         <Textarea
             underlined
             clearable
@@ -91,9 +88,7 @@ export default function Generator() {
                 width: "100%",
             }}
         />
-        {screenType === 'vertical' && (
             <Spacer y={1} />
-        )}
         <Button shadow color="gradient" auto onClick={() => {
             setSearch(query);
             setAttributes(attrQuery);
@@ -103,7 +98,7 @@ export default function Generator() {
         </Button>
         <div className={styles.card}>
           {isLoading ? (
-            <div>Loading ...</div>
+            <Loading type="gradient" color="secondary" />
          ) : (
            <span>
            {data.text}
