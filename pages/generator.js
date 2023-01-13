@@ -85,7 +85,7 @@ export default function Generator() {
             size="xl"
             onChange={(e) => setAttrQuery(e.target.value)}
             css={{
-                width: "100%",
+                width: "50vw",
             }}
         />
             <Spacer y={1} />
