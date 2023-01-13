@@ -14,7 +14,6 @@ export default function Home() {
     const fetchData = async () => {
       if (search && attributes) {
       setIsLoading(true);
-      console.log(search);
       const res = await fetch(`/api/openai`, {
         body: JSON.stringify({
           name: search,
