@@ -51,6 +51,7 @@ export default function Home() {
               className={styles.input}
               type="text"
               value={query}
+              placeholder="Adam..."
               onChange={event => setQuery(event.target.value)}
             />
           </div>
@@ -59,6 +60,7 @@ export default function Home() {
             <input
               type="text"
               value={attrQuery}
+              placeholder='He is a soccer player...'
               onChange={event => setAttrQuery(event.target.value)}
             />
           </div>
