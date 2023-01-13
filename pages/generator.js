@@ -1,11 +1,16 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTheme as useNextTheme } from 'next-themes'
 import { Switch, useTheme } from '@nextui-org/react'
 import { Input, Radio, Text, Textarea, Button, Spacer, Loading } from "@nextui-org/react";
+import Typed from 'typed.js';
 
 export default function Generator() {
+
+  const el = useRef(null);
+  const typed = useRef(null);
+
   const [data, setData] = useState( { text:'' });
   const [query, setQuery] = useState('');
   const [attrQuery, setAttrQuery] = useState('');
@@ -18,11 +23,35 @@ export default function Generator() {
 
   const { setTheme } = useNextTheme();
   const { isDark } = useTheme();
-    
+
+  const handleGenerate = () => {
+    setSearch(query);
+    setAttributes(attrQuery);
+    setType(typeQuery);
+  }
+  
+  // typing animation
+  useEffect(() => {
+    const options = {
+      strings: [ data.text ],
+      typeSpeed: 70,
+      backSpeed: 50,
+      showCursor: false,
+    };
+
+    typed.current = new Typed(el.current, options);
+
+    return () => {
+      typed.current.destroy();
+    }
+  }, [data.text])
+
+  // determine if web or mobile
   useEffect(() => {
     window.innerWidth > 700 ? setScreenType('horizontal') : setScreenType('vertical');
   }, [])
 
+  // send data to OpenAI API
   useEffect(() => {
     const fetchData = async () => {
       if (search && attributes) {
@@ -104,21 +133,21 @@ export default function Generator() {
             <Radio value="sexy" isSquared>Sexy</Radio>
             <Radio value="strange" isSquared>Strange</Radio>
         </Radio.Group>
-            <Spacer y={1} />
-        <Button shadow color="gradient" auto onClick={() => {
-            setSearch(query);
-            setAttributes(attrQuery);
-            setType(typeQuery);
-        }}>
+        <Spacer y={1} />
+        <Button shadow color="gradient" auto onClick={() => handleGenerate()}>
           Generate
         </Button>
         <div className={styles.card}>
           {isLoading ? (
             <Loading type="gradient" color="secondary" />
          ) : (
-           <Text h6>
-           {data.text}
-           </Text>
+          <>
+          {el && (
+            <div>
+              <span ref={el} />
+            </div>
+          )}
+          </>
            )}
            
           </div>
