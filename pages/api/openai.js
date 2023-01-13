@@ -2,11 +2,9 @@ const OpenAI = require('openai-api');
 const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 export default async (req, res) => {
-  let prompt = `You are at a Comedy Central roast. 
-                Your goal is to roast the following person: ${req.body.name} with about 150 words. Your goal is to be funny and insensitive.\n
-                 - Include how this person's name sucks and give a reason why \n
-                 - Create a funny comment about the person's personality and give a reason why\n
-                Also include how this person is ${req.body.attributes.toString()}, and create a generic roast.`;
+  let prompt = `You are writing a ${req.body.type} message to somebody.
+                Your goal is to write to the following person: ${req.body.name} with 150 words. Your goal is to be ${req.body.type}.\n
+                Also include how this person is ${req.body.attributes.toString()}`;
   const gptResponse = await openai.complete({
     engine: 'text-davinci-003',
     prompt: prompt,
