@@ -34,8 +34,8 @@ export default function Generator() {
   useEffect(() => {
     const options = {
       strings: [ data.text ],
-      typeSpeed: 70,
-      backSpeed: 50,
+      typeSpeed: 30,
+      backSpeed: 10,
       showCursor: false,
     };
 
@@ -99,10 +99,6 @@ export default function Generator() {
           onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
         />
         <Spacer y={2} />
-        <Text h6 css={screenType === 'horizontal' ? {width: "50%",} : null}>
-        Utilize the power of OpenAI&apos;s GPT-3 technology to automatically generate personalized messages based on a recipient&apos;s name, the type of message you want to send, and any relevant information. Whether you&apos;re reaching out to potential clients or sending a quick message to a loved one, this tool makes it easy to make a lasting impression. With its advanced natural language processing abilities, your message will be tailored to the recipient&apos;s preferences and tone, making it the perfect choice to make a lasting impact.
-        </Text>
-        <Spacer y={2} />
         <Input
             value={query}
             onChange={event => setQuery(event.target.value)}
@@ -137,20 +133,18 @@ export default function Generator() {
         <Button shadow color="gradient" auto onClick={() => handleGenerate()}>
           Generate
         </Button>
-        <div className={styles.card}>
+        <Spacer y={2} />
           {isLoading ? (
             <Loading type="gradient" color="secondary" />
          ) : (
           <>
           {el && (
-            <div>
+            <div style={{width: '100%'}}>
               <span ref={el} />
             </div>
           )}
           </>
            )}
-           
-          </div>
       </main>
     </div>
   );
