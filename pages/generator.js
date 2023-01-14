@@ -100,7 +100,7 @@ export default function Generator() {
         />
         <Spacer y={2} />
         <Text h6 css={screenType === 'horizontal' ? {width: "50%",} : null}>
-        Utilize the power of OpenAI's GPT-3 technology to automatically generate personalized messages based on a recipient's name, the type of message you want to send, and any relevant information. Whether you're reaching out to potential clients or sending a quick message to a loved one, this tool makes it easy to make a lasting impression. With its advanced natural language processing abilities, your message will be tailored to the recipient's preferences and tone, making it the perfect choice to make a lasting impact.
+        Utilize the power of OpenAI&apos;s GPT-3 technology to automatically generate personalized messages based on a recipient&apos;s name, the type of message you want to send, and any relevant information. Whether you&apos;re reaching out to potential clients or sending a quick message to a loved one, this tool makes it easy to make a lasting impression. With its advanced natural language processing abilities, your message will be tailored to the recipient&apos;s preferences and tone, making it the perfect choice to make a lasting impact.
         </Text>
         <Spacer y={2} />
         <Input
