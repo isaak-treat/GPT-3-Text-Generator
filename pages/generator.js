@@ -128,6 +128,7 @@ export default function Generator() {
             <Radio value="roast" isSquared>Roast</Radio>
             <Radio value="sexy" isSquared>Sexy</Radio>
             <Radio value="strange" isSquared>Strange</Radio>
+            <Radio value="spooky" isSquared>Spooky</Radio>
         </Radio.Group>
         <Spacer y={1} />
         <Button shadow color="gradient" auto onClick={() => handleGenerate()}>
